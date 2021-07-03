@@ -6,7 +6,8 @@
 
 #maven igonre
 target/
-repository/
+
+
 
 #eclipse ignore
 .settings/
@@ -16,6 +17,7 @@ repository/
 #idea
 .idea/
 /idea/
+/repository
 *.ipr
 *.iml
 *.iws
