@@ -45,6 +45,13 @@ public class AdminMngController extends BaseController implements AdminMngContro
     @Autowired
     private FaceVerifyUtils faceVerifyUtils;
 
+    /**
+     * @Description:
+     * @Param [adminLoginBO, request, response]
+     * @Return com.zyx.grace.result.GraceJSONResult
+     * @Author: zhangyaxin
+     * @Create: 2021/7/3 19:52
+     */
     @Override
     public GraceJSONResult adminLogin(AdminLoginBO adminLoginBO,
                              HttpServletRequest request,
@@ -68,12 +75,12 @@ public class AdminMngController extends BaseController implements AdminMngContro
         }
     }
 
-
     /**
-     * 用于admin用户登录过后的基本信息设置
-     * @param admin
-     * @param request
-     * @param response
+     * @Description: 用于admin用户登录过后的基本信息设置
+     * @Param [admin, request, response]
+     * @Return void
+     * @Author: zhangyaxin
+     * @Create: 2021/7/3 19:52
      */
     private void doLoginSettings(AdminUser admin,
                                  HttpServletRequest request,
