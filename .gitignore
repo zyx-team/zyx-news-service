@@ -6,6 +6,7 @@
 
 #maven igonre
 target/
+repository/
 
 #eclipse ignore
 .settings/
