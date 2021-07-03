@@ -1,0 +1,106 @@
+############################################################
+#
+# admin微服务
+# web访问端口号  约定：8005
+#
+############################################################
+server:
+  #  port: 8005
+  tomcat:
+    uri-encoding: UTF-8
+    max-swallow-size: -1  # tomcat默认大小2M，超过2M的文件不会被捕获，需要调整此处大小为100MB或者-1即可
+
+############################################################
+#
+# 配置项目信息
+#
+############################################################
+spring:
+  profiles:
+    active: dev   # yml中配置文件的环境配置，dev：开发环境，test：测试环境，prod：生产环境
+  application:
+    name: service-admin
+  datasource:                                         # 数据源的相关配置
+    type: com.zaxxer.hikari.HikariDataSource          # 数据源类型：HikariCP
+    driver-class-name: com.mysql.jdbc.Driver          # mysql驱动
+    url: jdbc:mysql://localhost:3306/zyx-news-dev?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true
+    username: root
+    password: root
+    hikari:
+      connection-timeout: 30000       # 等待连接池分配连接的最大时长（毫秒），超过这个时长还没可用的连接则发生SQLException， 默认:30秒
+      minimum-idle: 5                 # 最小连接数
+      maximum-pool-size: 20           # 最大连接数
+      auto-commit: true               # 自动提交
+      idle-timeout: 600000            # 连接超时的最大时长（毫秒），超时则被释放（retired），默认:10分钟
+      pool-name: DateSourceHikariCP     # 连接池名字
+      max-lifetime: 1800000           # 连接的生命时长（毫秒），超时而且没被使用则被释放（retired），默认:30分钟 1800000ms
+      connection-test-query: SELECT 1
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  data:
+    mongodb:
+      uri: mongodb://root:root@192.168.1.202:27017
+      database: imooc-news
+
+############################################################
+#
+# mybatis 配置
+#
+############################################################
+mybatis:
+  type-aliases-package: com.zyx.pojo          # 所有POJO类所在包路径
+  mapper-locations: classpath:mapper/*.xml      # mapper映射文件
+
+############################################################
+#
+# mybatis mapper 配置
+#
+############################################################
+# 通用 Mapper 配置
+mapper:
+  mappers: com.zyx.my.mapper.MyMapper
+  not-empty: false    # 在进行数据库操作的的时候，判断表达式 username != null, 是否追加 username != ''
+  identity: MYSQL
+# 分页插件配置
+pagehelper:
+  helperDialect: mysql
+  supportMethodsArguments: true
+
+############################################################
+#
+# eureka client 配置信息
+#
+############################################################
+eureka:
+  # 自定义eureka server的信息
+  server:
+    hostname: eureka
+    port: 7000
+  client:
+    # 所有的微服务都必须注册到eureka中
+    register-with-eureka: true
+    # 从注册中心获得检索服务实例
+    fetch-registry: true
+    # 注册中心的服务地址
+    service-url:
+      #      defaultZone: http://${eureka.server.hostname}:${eureka.server.port}/eureka/
+      defaultZone: http://eureka-cluster-7001:7001/eureka/,http://eureka-cluster-7002:7002/eureka/,http://eureka-cluster-7003:7003/eureka/
+  instance:
+    lease-renewal-interval-in-seconds: 3      # 调整微服务（eureka client）和注册中心（eureka server）的心跳时间
+    lease-expiration-duration-in-seconds: 5   # eureka 举例最近的一次心跳等待提出的时间，默认90s
+
+
+# 配置hystrix
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000   # 设置hystrix超时时间，超过2秒触发降级
+      circuitBreaker:   # 配置断路器
+        enabled: true
+        requestVolumeThreshold: 10    # 触发熔断最小请求次数，默认：20
+        sleepWindowInMilliseconds: 15000    # 熔断后过几秒后尝试半开状态（请求重试），默认：5s
+        errorThresholdPercentage: 50  # 触发熔断的失败率（异常率/阈值），默认：50
