@@ -36,12 +36,12 @@ public interface FileUploaderControllerApi {
     public GraceJSONResult uploadSomeFiles(@RequestParam String userId,
                                       MultipartFile[] files) throws Exception;
 
-
     /**
-     * 文件上传到mongodb的gridfs中
-     * @param newAdminBO
-     * @return
-     * @throws Exception
+     * @Description: 文件上传到mongodb的gridfs中
+     * @Param [newAdminBO]
+     * @Return com.zyx.grace.result.GraceJSONResult
+     * @Author: zhangyaxin
+     * @Create: 2021/7/4 17:36
      */
     @PostMapping("/uploadToGridFS")
     public GraceJSONResult uploadToGridFS(@RequestBody NewAdminBO newAdminBO)
