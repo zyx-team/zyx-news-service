@@ -47,7 +47,7 @@ spring:
     suffix: .ftl
     template-loader-path: classpath:/templates/
   rabbitmq:
-    host: 192.168.1.204
+    host: 192.168.31.101
     port: 5672
     username: admin
     password: admin
@@ -124,8 +124,7 @@ eureka:
     # 注册中心的服务地址
     service-url:
       #defaultZone: http://${eureka.server.hostname}:${eureka.server.port}/eureka/
-      defaultZone: http://eureka-cluster-7001:7001/eureka/
-#      defaultZone: http://eureka-cluster-7001:7001/eureka/,http://eureka-cluster-7002:7002/eureka/,http://eureka-cluster-7003:7003/eureka/
+      defaultZone: http://eureka-cluster-7001:7001/eureka/,http://eureka-cluster-7002:7002/eureka/,http://eureka-cluster-7003:7003/eureka/
   instance:
     lease-renewal-interval-in-seconds: 3      # 调整微服务（eureka client）和注册中心（eureka server）的心跳时间
     lease-expiration-duration-in-seconds: 5   # eureka 举例最近的一次心跳等待提出的时间，默认90s

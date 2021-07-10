@@ -68,10 +68,3 @@ management:
       exposure:
         include: "*"
 
-
-# ip请求限制的参数配置
-blackIp:
-  continueCounts: ${counts:10}    # ip连续请求的次数
-  timeInterval: ${interval:10}    # ip判断的事件间隔，单位：秒
-  limitTimes: ${times:15}         # 限制的事件，单位：秒
-

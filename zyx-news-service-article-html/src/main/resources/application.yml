@@ -32,7 +32,7 @@ spring:
     suffix: .ftl
     template-loader-path: classpath:/templates/
   rabbitmq:
-    host: 192.168.1.204
+    host: 192.168.31.101
     port: 5672
     username: admin
     password: admin
