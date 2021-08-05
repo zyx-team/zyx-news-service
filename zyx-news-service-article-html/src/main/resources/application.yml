@@ -36,7 +36,7 @@ spring:
     port: 5672
     username: admin
     password: admin
-    virtual-host: zyx-news-dev
+    virtual-host: zyx-news-service
 
 # 定义freemarker生成的html位置
 freemarker:

@@ -13,8 +13,8 @@ import tk.mybatis.spring.annotation.MapperScan;
 @SpringBootApplication
 @MapperScan(basePackages = "com.zyx.article.mapper")
 @ComponentScan(basePackages = {"com.zyx", "org.n3r.idworker"})
-@EnableEurekaClient
-//@RibbonClient(name = "SERVICE-USER", configuration = MyRule.class)
+//@EnableEurekaClient
+////@RibbonClient(name = "SERVICE-USER", configuration = MyRule.class)
 @EnableFeignClients({"com.zyx"})
 @EnableHystrix
 public class Application {

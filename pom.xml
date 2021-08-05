@@ -20,6 +20,7 @@
         <module>springcloud-eureka-cluster</module>
         <module>springcloud-zuul-server</module>
         <module>springcloud-config</module>
+        <module>zyx-sdk-source01</module>
     </modules>
 
     <!--
