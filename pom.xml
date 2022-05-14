@@ -16,10 +16,6 @@
         <module>zyx-news-service-admin</module>
         <module>zyx-news-service-article</module>
         <module>zyx-news-service-article-html</module>
-        <module>springcloud-eureka</module>
-        <module>springcloud-eureka-cluster</module>
-        <module>springcloud-zuul-server</module>
-        <module>springcloud-config</module>
     </modules>
 
     <!--
@@ -39,6 +35,7 @@
     </parent>
 
     <properties>
+        <spring-cloud-alibaba-dependencies.version>2.2.5.RELEASE</spring-cloud-alibaba-dependencies.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
@@ -81,6 +78,15 @@
                 <version>Hoxton.SR3</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <!-- SpringCloud alibaba依赖-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba-dependencies.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
             </dependency>
 
             <!--<dependency>-->

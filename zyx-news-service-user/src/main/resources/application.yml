@@ -5,7 +5,7 @@
 #
 ############################################################
 server:
-#  port: 8005
+  port: 8003
   tomcat:
     uri-encoding: UTF-8
     max-swallow-size: -1  # tomcat默认大小2M，超过2M的文件不会被捕获，需要调整此处大小为100MB或者-1即可
@@ -45,6 +45,10 @@ spring:
     password: admin
     virtual-host: zyx-news-service
   cloud:
+    nacos:
+      discovery:
+        service: service-user
+      server-addr: 192.168.31.101:8848
     stream:
       bindings:                           # 绑定通道和交换机
         myOutput:                         # 定义生产者的通道
@@ -54,16 +58,6 @@ spring:
           # 自定义交换机的名字，也就是消息从底层mq输入到消费端进行消费
           destination: streamExchange
           group: girls
-  zipkin:
-    # 配置zipkin采集的服务地址，数据会发送到这里
-    base-url: http://192.168.1.2:9411/
-    sender:
-      # 数据采集的传输通信方式，web http的形式
-      type: web
-  sleuth:
-    sampler:
-      # 数据采样比例（百分数），0~1
-      probability: 1
 
 ############################################################
 #
@@ -90,40 +84,9 @@ pagehelper:
   supportMethodsArguments: true
 
 
-############################################################
-#
-# eureka client 配置信息
-#
-############################################################
-eureka:
-  # 自定义eureka server的信息
-  server:
-    hostname: eureka
-    port: 7000
-  client:
-    # 所有的微服务都必须注册到eureka中
-    register-with-eureka: true
-    # 从注册中心获得检索服务实例
-    fetch-registry: true
-    # 注册中心的服务地址
-    service-url:
-#      defaultZone: http://${eureka.server.hostname}:${eureka.server.port}/eureka/
-      defaultZone: http://eureka-cluster-7001:7001/eureka/,http://eureka-cluster-7002:7002/eureka/,http://eureka-cluster-7003:7003/eureka/
-  instance:
-    lease-renewal-interval-in-seconds: 3      # 调整微服务（eureka client）和注册中心（eureka server）的心跳时间
-    lease-expiration-duration-in-seconds: 5   # eureka 举例最近的一次心跳等待提出的时间，默认90s
 
 
-# 配置hystrix
-hystrix:
-  command:
-    default:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 2000   # 设置hystrix超时时间，超过2秒触发降级
-      circuitBreaker:   # 配置断路器
-        enabled: true
-        requestVolumeThreshold: 10    # 触发熔断最小请求次数，默认：20
-        sleepWindowInMilliseconds: 15000    # 熔断后过几秒后尝试半开状态（请求重试），默认：5s
-        errorThresholdPercentage: 50  # 触发熔断的失败率（异常率/阈值），默认：50
+
+
+
+
