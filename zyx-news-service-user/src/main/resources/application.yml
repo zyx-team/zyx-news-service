@@ -5,7 +5,7 @@
 #
 ############################################################
 server:
-  port: 8003
+#  port: 8003
   tomcat:
     uri-encoding: UTF-8
     max-swallow-size: -1  # tomcat默认大小2M，超过2M的文件不会被捕获，需要调整此处大小为100MB或者-1即可
@@ -20,6 +20,11 @@ spring:
     active: dev   # yml中配置文件的环境配置，dev：开发环境，test：测试环境，prod：生产环境
   application:
     name: service-user
+  cloud:
+    nacos:
+      discovery:
+        service: service-user
+      server-addr: 192.168.31.101:8848
   datasource:                                         # 数据源的相关配置
     type: com.zaxxer.hikari.HikariDataSource          # 数据源类型：HikariCP
     driver-class-name: com.mysql.jdbc.Driver          # mysql驱动
@@ -44,11 +49,6 @@ spring:
     username: admin
     password: admin
     virtual-host: zyx-news-service
-  cloud:
-    nacos:
-      discovery:
-        service: service-user
-      server-addr: 192.168.31.101:8848
     stream:
       bindings:                           # 绑定通道和交换机
         myOutput:                         # 定义生产者的通道
@@ -83,6 +83,12 @@ pagehelper:
   helperDialect: mysql
   supportMethodsArguments: true
 
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
 
 
 
