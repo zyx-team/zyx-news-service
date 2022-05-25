@@ -25,6 +25,10 @@ spring:
       discovery:
         service: service-user
       server-addr: 192.168.31.101:8848
+    sentinel:
+      transport:
+        dashboard: 192.168.31.101:8080 # 控制台地址
+        prot: 8719
   datasource:                                         # 数据源的相关配置
     type: com.zaxxer.hikari.HikariDataSource          # 数据源类型：HikariCP
     driver-class-name: com.mysql.jdbc.Driver          # mysql驱动

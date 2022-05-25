@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        file-extension: yaml    #指定动态文件配置的（扩展名）
+#        group: user02_GROUP     #指定不同分组
+#        namespace: 7f8ce873-59ee-435a-bbeb-5158225836b5 #命名空间配置
+      server-addr: 192.168.31.101:8848
+
+      #dataId: service-user-dev.yaml

@@ -17,7 +17,7 @@ package com.zyx.grace.result;
  * 			    557: 校验用户是否在CAS登录，用户门票的校验
  * @Copyright: Copyright (c) 2020
  * @Company: www.imooc.com
- * @author 慕课网 - 风间影月
+ * @author zyx
  * @version V1.0
  */
 public class IMOOCJSONResult {

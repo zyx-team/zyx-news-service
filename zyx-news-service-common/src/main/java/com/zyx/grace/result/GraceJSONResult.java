@@ -13,7 +13,7 @@ import java.util.Map;
  *
  * @Copyright: Copyright (c) 2020
  * @Company: www.imooc.com
- * @author 慕课网 - 风间影月
+ * @author zyx
  * @version V2.0
  */
 public class GraceJSONResult {
