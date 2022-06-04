@@ -40,6 +40,13 @@ public class PassportController extends BaseController implements PassportContro
     @Autowired
     private UserService userService;
 
+    /**
+     * @Description: 获取短信
+     * @Param [mobile, request]
+     * @Return com.zyx.grace.result.GraceJSONResult
+     * @Author: zhangyaxin
+     * @Create: 2022/6/1 22:03
+     */
     @Override
     public GraceJSONResult getSMSCode(String mobile, HttpServletRequest request) {
 
@@ -59,6 +66,13 @@ public class PassportController extends BaseController implements PassportContro
         return GraceJSONResult.ok();
     }
 
+    /**
+     * @Description: 用户登录
+     * @Param [registLoginBO, request, response]
+     * @Return com.zyx.grace.result.GraceJSONResult
+     * @Author: zhangyaxin
+     * @Create: 2022/6/1 22:04
+     */
     @Override
     public GraceJSONResult doLogin(@Valid RegistLoginBO registLoginBO,
 //                                   BindingResult result,

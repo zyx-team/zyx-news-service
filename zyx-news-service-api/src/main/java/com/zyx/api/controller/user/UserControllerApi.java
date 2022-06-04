@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
-@Api(value = "用户信息相关Controller", tags = {"用户信息相关Controller"})
+@Api(value = "用户信息相关UserController", tags = {"用户信息相关UserController"})
 @RequestMapping("user")
 @FeignClient(value = MyServiceList.SERVICE_USER, fallbackFactory = UserControllerFactoryFallback.class)
 public interface UserControllerApi {
