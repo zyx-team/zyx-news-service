@@ -1,6 +1,5 @@
 package com.zyx.api.config;
 
-import com.zyx.api.controller.user.PassportControllerApi;
 import com.zyx.api.interceptors.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
