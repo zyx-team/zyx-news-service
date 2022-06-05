@@ -37,6 +37,9 @@ public class InterceptorConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
 
+        /**
+         * 普通用户
+         */
         registry.addInterceptor(passportInterceptor())
                 .addPathPatterns("/passport/getSMSCode");
 
@@ -53,6 +56,9 @@ public class InterceptorConfig implements WebMvcConfigurer {
                 .addPathPatterns("/fans/follow")
                 .addPathPatterns("/fans/unfollow");
 
+        /**
+         * admin管理员用户
+         */
         registry.addInterceptor(adminTokenInterceptor())
                 .addPathPatterns("/adminMng/adminIsExist")
                 .addPathPatterns("/adminMng/addNewAdmin")

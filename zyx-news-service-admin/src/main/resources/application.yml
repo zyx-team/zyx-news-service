@@ -16,10 +16,19 @@ server:
 #
 ############################################################
 spring:
-  profiles:
-    active: dev   # yml中配置文件的环境配置，dev：开发环境，test：测试环境，prod：生产环境
   application:
     name: service-admin
+  profiles:
+    active: dev   # yml中配置文件的环境配置，dev：开发环境，test：测试环境，prod：生产环境
+  cloud:
+    nacos:
+      discovery:
+        service: service-admin
+      server-addr: 192.168.31.101:8848
+    sentinel:
+      transport:
+        dashboard: 192.168.31.101:8080 # 控制台地址
+        prot: 8719
   datasource:                                         # 数据源的相关配置
     type: com.zaxxer.hikari.HikariDataSource          # 数据源类型：HikariCP
     driver-class-name: com.mysql.jdbc.Driver          # mysql驱动
@@ -38,10 +47,6 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
-  data:
-    mongodb:
-      uri: mongodb://root:root@192.168.31.101:27017
-      database: zyx_news
 
 ############################################################
 #
@@ -66,30 +71,6 @@ mapper:
 pagehelper:
   helperDialect: mysql
   supportMethodsArguments: true
-
-############################################################
-#
-# eureka client 配置信息
-#
-############################################################
-eureka:
-  # 自定义eureka server的信息
-  server:
-    hostname: eureka
-    port: 7000
-  client:
-    # 所有的微服务都必须注册到eureka中
-    register-with-eureka: true
-    # 从注册中心获得检索服务实例
-    fetch-registry: true
-    # 注册中心的服务地址
-    service-url:
-      #      defaultZone: http://${eureka.server.hostname}:${eureka.server.port}/eureka/
-      defaultZone: http://eureka-cluster-7001:7001/eureka/,http://eureka-cluster-7002:7002/eureka/,http://eureka-cluster-7003:7003/eureka/
-  instance:
-    lease-renewal-interval-in-seconds: 3      # 调整微服务（eureka client）和注册中心（eureka server）的心跳时间
-    lease-expiration-duration-in-seconds: 5   # eureka 举例最近的一次心跳等待提出的时间，默认90s
-
 
 # 配置hystrix
 hystrix:

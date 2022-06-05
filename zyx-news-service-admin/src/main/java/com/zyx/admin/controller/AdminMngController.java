@@ -46,7 +46,7 @@ public class AdminMngController extends BaseController implements AdminMngContro
     private FaceVerifyUtils faceVerifyUtils;
 
     /**
-     * @Description:
+     * @Description: admin用户登录
      * @Param [adminLoginBO, request, response]
      * @Return com.zyx.grace.result.GraceJSONResult
      * @Author: zhangyaxin
@@ -95,6 +95,13 @@ public class AdminMngController extends BaseController implements AdminMngContro
         setCookie(request, response, "aname", admin.getAdminName(), COOKIE_MONTH);
     }
 
+    /**
+     * @Description: 判断admin用户名是否存在
+     * @Param [username]
+     * @Return com.zyx.grace.result.GraceJSONResult
+     * @Author: zhangyaxin
+     * @Create: 2022/6/5 14:36
+     */
     @Override
     public GraceJSONResult adminIsExist(String username) {
         checkAdminExist(username);
