@@ -7,6 +7,12 @@ spring:
     host: 192.168.31.101
     port: 6379
     password: 123456
+  rabbitmq:
+    host: 192.168.31.101
+    port: 5672
+    username: admin
+    password: admin
+    virtual-host: zyx-news-service
 
 # 在dev环境开启mybatis的日志打印
 mybatis:

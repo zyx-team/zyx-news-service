@@ -47,12 +47,6 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
-  rabbitmq:
-    host: 192.168.31.101
-    port: 5672
-    username: admin
-    password: admin
-    virtual-host: zyx-news-service
     stream:
       bindings:                           # 绑定通道和交换机
         myOutput:                         # 定义生产者的通道
