@@ -219,9 +219,11 @@ public class ArticleServiceImpl extends BaseService implements ArticleService {
         criteria.andEqualTo("isDelete", YesOrNo.NO.type);
 
         if (startDate != null) {
+            // andGreaterThanOrEqualTo 意思是 >=
             criteria.andGreaterThanOrEqualTo("publishTime", startDate);
         }
         if (endDate != null) {
+            // andLessThanOrEqualTo 意思是 <=
             criteria.andLessThanOrEqualTo("publishTime", endDate);
         }
 

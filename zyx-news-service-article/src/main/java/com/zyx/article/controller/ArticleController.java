@@ -51,6 +51,13 @@ public class ArticleController extends BaseController implements ArticleControll
     @Autowired
     private ArticleService articleService;
 
+    /**
+     * @Description: 用户发文
+     * @Param [newArticleBO]
+     * @Return com.zyx.grace.result.GraceJSONResult
+     * @Author: zhangyaxin
+     * @Create: 2022/6/12 17:33
+     */
     @Override
     public GraceJSONResult createArticle(@Valid NewArticleBO newArticleBO) {
 //                                         BindingResult result) {
@@ -79,7 +86,7 @@ public class ArticleController extends BaseController implements ArticleControll
             List<Category> catList =
                     JsonUtils.jsonToList(allCatJson, Category.class);
             for (Category c : catList) {
-                if(c.getId() == newArticleBO.getCategoryId()) {
+                if (c.getId() == newArticleBO.getCategoryId()) {
                     temp = c;
                     break;
                 }
@@ -96,6 +103,13 @@ public class ArticleController extends BaseController implements ArticleControll
         return GraceJSONResult.ok();
     }
 
+    /**
+     * @Description: 查询用户的所有文章列表
+     * @Param [userId, keyword, status, startDate, endDate, page, pageSize]
+     * @Return com.zyx.grace.result.GraceJSONResult
+     * @Author: zhangyaxin
+     * @Create: 2022/6/12 17:21
+     */
     @Override
     public GraceJSONResult queryMyList(String userId,
                                        String keyword,
@@ -118,16 +132,23 @@ public class ArticleController extends BaseController implements ArticleControll
 
         // 查询我的列表，调用service
         PagedGridResult grid = articleService.queryMyArticleList(userId,
-                                            keyword,
-                                            status,
-                                            startDate,
-                                            endDate,
-                                            page,
-                                            pageSize);
+                keyword,
+                status,
+                startDate,
+                endDate,
+                page,
+                pageSize);
 
         return GraceJSONResult.ok(grid);
     }
 
+    /**
+     * @Description: 管理员查询用户的所有文章列表
+     * @Param [status, page, pageSize]
+     * @Return com.zyx.grace.result.GraceJSONResult
+     * @Author: zhangyaxin
+     * @Create: 2022/6/12 17:22
+     */
     @Override
     public GraceJSONResult queryAllList(Integer status, Integer page, Integer pageSize) {
 
@@ -144,6 +165,13 @@ public class ArticleController extends BaseController implements ArticleControll
         return GraceJSONResult.ok(gridResult);
     }
 
+    /**
+     * @Description: 管理员对文章进行审核通过或者失败
+     * @Param [articleId, passOrNot]
+     * @Return com.zyx.grace.result.GraceJSONResult
+     * @Author: zhangyaxin
+     * @Create: 2022/6/12 17:22
+     */
     @Override
     public GraceJSONResult doReview(String articleId, Integer passOrNot) {
 
@@ -257,7 +285,7 @@ public class ArticleController extends BaseController implements ArticleControll
 //        System.out.println(htmlContent);
 
         InputStream inputStream = IOUtils.toInputStream(htmlContent);
-        ObjectId fileId = gridFSBucket.uploadFromStream(detailVO.getId() + ".html",inputStream);
+        ObjectId fileId = gridFSBucket.uploadFromStream(detailVO.getId() + ".html", inputStream);
         return fileId.toString();
     }
 
@@ -276,13 +304,26 @@ public class ArticleController extends BaseController implements ArticleControll
         return detailVO;
     }
 
-
+    /**
+     * @Description: 用户删除文章
+     * @Param [userId, articleId]
+     * @Return com.zyx.grace.result.GraceJSONResult
+     * @Author: zhangyaxin
+     * @Create: 2022/6/12 17:22
+     */
     @Override
     public GraceJSONResult delete(String userId, String articleId) {
         articleService.deleteArticle(userId, articleId);
         return GraceJSONResult.ok();
     }
 
+    /**
+     * @Description: 用户撤回文章
+     * @Param [userId, articleId]
+     * @Return com.zyx.grace.result.GraceJSONResult
+     * @Author: zhangyaxin
+     * @Create: 2022/6/12 17:23
+     */
     @Override
     public GraceJSONResult withdraw(String userId, String articleId) {
         articleService.withdrawArticle(userId, articleId);
