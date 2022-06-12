@@ -42,6 +42,13 @@ public class ArticlePortalController extends BaseController implements ArticlePo
     @Autowired
     private RestTemplate restTemplate;
 
+    /**
+     * @Description: 首页查询文章列表
+     * @Param [keyword, category, page, pageSize]
+     * @Return com.zyx.grace.result.GraceJSONResult
+     * @Author: zhangyaxin
+     * @Create: 2022/6/12 19:45
+     */
     @Override
     public GraceJSONResult list(String keyword,
                                 Integer category,
@@ -232,11 +239,25 @@ public class ArticlePortalController extends BaseController implements ArticlePo
         return publisherList;
     }
 
+    /**
+     * @Description: 首页查询热闻列表
+     * @Param []
+     * @Return com.zyx.grace.result.GraceJSONResult
+     * @Author: zhangyaxin
+     * @Create: 2022/6/12 19:45
+     */
     @Override
     public GraceJSONResult hotList() {
         return GraceJSONResult.ok(articlePortalService.queryHotList());
     }
 
+    /**
+     * @Description: 查询作家发布的所有文章列表
+     * @Param [writerId, page, pageSize]
+     * @Return com.zyx.grace.result.GraceJSONResult
+     * @Author: zhangyaxin
+     * @Create: 2022/6/12 19:46
+     */
     @Override
     public GraceJSONResult queryArticleListOfWriter(String writerId, Integer page, Integer pageSize) {
 
@@ -255,12 +276,26 @@ public class ArticlePortalController extends BaseController implements ArticlePo
         return GraceJSONResult.ok(gridResult);
     }
 
+    /**
+     * @Description: 作家页面查询近期佳文
+     * @Param [writerId]
+     * @Return com.zyx.grace.result.GraceJSONResult
+     * @Author: zhangyaxin
+     * @Create: 2022/6/12 19:46
+     */
     @Override
     public GraceJSONResult queryGoodArticleListOfWriter(String writerId) {
         PagedGridResult gridResult = articlePortalService.queryGoodArticleListOfWriter(writerId);
         return GraceJSONResult.ok(gridResult);
     }
 
+    /**
+     * @Description: 文章详情查询
+     * @Param [articleId]
+     * @Return com.zyx.grace.result.GraceJSONResult
+     * @Author: zhangyaxin
+     * @Create: 2022/6/12 19:46
+     */
     @Override
     public GraceJSONResult detail(String articleId) {
         ArticleDetailVO detailVO = articlePortalService.queryDetail(articleId);
@@ -279,11 +314,25 @@ public class ArticlePortalController extends BaseController implements ArticlePo
         return GraceJSONResult.ok(detailVO);
     }
 
+    /**
+     * @Description: 获得文章阅读数
+     * @Param [articleId]
+     * @Return java.lang.Integer
+     * @Author: zhangyaxin
+     * @Create: 2022/6/12 19:47
+     */
     @Override
     public Integer readCounts(String articleId) {
         return getCountsFromRedis(REDIS_ARTICLE_READ_COUNTS + ":" + articleId);
     }
 
+    /**
+     * @Description: 阅读文章，文章阅读量累加
+     * @Param [articleId, request]
+     * @Return com.zyx.grace.result.GraceJSONResult
+     * @Author: zhangyaxin
+     * @Create: 2022/6/12 19:47
+     */
     @Override
     public GraceJSONResult readArticle(String articleId, HttpServletRequest request) {
 

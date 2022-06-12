@@ -28,6 +28,13 @@ public class AliImageReviewUtils {
     @Autowired
     private AliyunResource aliyunResource;
 
+    /**
+     * @Description: 阿里云-图片审核
+     * @Param [imgUrl]
+     * @Return boolean
+     * @Author: zhangyaxin
+     * @Create: 2022/6/12 18:08
+     */
     public boolean reviewImage(String imgUrl) throws Exception {
         IClientProfile profile = DefaultProfile
                 .getProfile("cn-shanghai", "LTAI4GKr5FyxhJViuMkRmptP", "7oGFsKDwbn5Ek8iSrsPkSsT95pAmkG");

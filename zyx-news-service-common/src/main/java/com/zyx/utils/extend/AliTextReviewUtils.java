@@ -22,6 +22,13 @@ public class AliTextReviewUtils {
     @Autowired
     private AliyunResource aliyunResource;
 
+    /**
+     * @Description: 阿里云-内容审核
+     * @Param [content]
+     * @Return java.lang.String
+     * @Author: zhangyaxin
+     * @Create: 2022/6/12 18:07
+     */
     public String reviewTextContent(String content) {
         IClientProfile profile = DefaultProfile.getProfile("cn-shanghai",
                 aliyunResource.getAccessKeyID(),
