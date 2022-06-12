@@ -96,6 +96,13 @@ public class FileUploaderController implements FileUploaderControllerApi {
         return GraceJSONResult.ok(finalPath);
     }
 
+    /**
+     * @Description: 批量文件上传
+     * @Param [userId, files]
+     * @Return com.zyx.grace.result.GraceJSONResult
+     * @Author: zhangyaxin
+     * @Create: 2022/6/11 21:43
+     */
     @Override
     public GraceJSONResult uploadSomeFiles(String userId,
                                            MultipartFile[] files)
