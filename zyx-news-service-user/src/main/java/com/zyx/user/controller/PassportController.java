@@ -40,17 +40,25 @@ public class PassportController extends BaseController implements PassportContro
     @Autowired
     private UserService userService;
 
+    /**
+     * @Description: 获取短信
+     * @Param [mobile, request]
+     * @Return com.zyx.grace.result.GraceJSONResult
+     * @Author: zhangyaxin
+     * @Create: 2022/6/1 22:03
+     */
     @Override
     public GraceJSONResult getSMSCode(String mobile, HttpServletRequest request) {
 
         // 获得用户ip
         String userIp = IPUtil.getRequestIp(request);
 
-        // 根据用户的ip进行限制，限制用户在60秒内只能获得一次验证码
+        // 根据用户的ip进行限制，限制用户在60秒内只能获得一次验证码 注：自定义拦截器进行拦截
         redis.setnx60s(MOBILE_SMSCODE + ":" + userIp, userIp);
 
         // 生成随机验证码并且发送短信
-        String random = (int)((Math.random() * 9 + 1) * 100000) + "";
+        String random = "123456"; // 暂先测试
+//        String random = (int)((Math.random() * 9 + 1) * 100000) + "";
 //        smsUtils.sendSMS(MyInfo.getMobile(), random);
 
         // 把验证码存入redis，用于后续进行验证
@@ -59,6 +67,13 @@ public class PassportController extends BaseController implements PassportContro
         return GraceJSONResult.ok();
     }
 
+    /**
+     * @Description: 用户登录
+     * @Param [registLoginBO, request, response]
+     * @Return com.zyx.grace.result.GraceJSONResult
+     * @Author: zhangyaxin
+     * @Create: 2022/6/1 22:04
+     */
     @Override
     public GraceJSONResult doLogin(@Valid RegistLoginBO registLoginBO,
 //                                   BindingResult result,

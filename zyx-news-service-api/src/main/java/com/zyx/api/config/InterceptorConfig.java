@@ -1,6 +1,5 @@
 package com.zyx.api.config;
 
-import com.zyx.api.controller.user.PassportControllerApi;
 import com.zyx.api.interceptors.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -38,6 +37,9 @@ public class InterceptorConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
 
+        /**
+         * 普通用户
+         */
         registry.addInterceptor(passportInterceptor())
                 .addPathPatterns("/passport/getSMSCode");
 
@@ -54,6 +56,9 @@ public class InterceptorConfig implements WebMvcConfigurer {
                 .addPathPatterns("/fans/follow")
                 .addPathPatterns("/fans/unfollow");
 
+        /**
+         * admin管理员用户
+         */
         registry.addInterceptor(adminTokenInterceptor())
                 .addPathPatterns("/adminMng/adminIsExist")
                 .addPathPatterns("/adminMng/addNewAdmin")

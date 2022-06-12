@@ -17,7 +17,7 @@ public interface CategoryService {
     public void modifyCategory(Category category);
 
     /**
-     * 查询分类名是否已经存在
+     * 查询分类名是否已经存在d
      */
     public boolean queryCatIsExist(String catName, String oldCatName);
 

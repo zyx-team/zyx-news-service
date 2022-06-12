@@ -20,6 +20,7 @@ public class PassportInterceptor implements HandlerInterceptor {
 
     /**
      * 拦截请求，访问controller之前
+     * 验证码拦截
      * @param request
      * @param response
      * @param handler

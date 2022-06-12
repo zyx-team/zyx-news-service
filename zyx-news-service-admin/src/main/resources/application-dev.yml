@@ -3,13 +3,26 @@ server:
 
 
 spring:
+  # redis-配置
   redis:
     database: 0
     host: 192.168.31.101
     port: 6379
     password: 123456
+  # rabbitmq-配置
+  rabbitmq:
+    host: 192.168.31.101
+    port: 5672
+    username: admin
+    password: admin
+    virtual-host: zyx-news-service
+  # mongodb-配置
+  data:
+    mongodb:
+      uri: mongodb://root:root@192.168.31.101:27017
+      database: zyx_news
 
-# 在dev环境开启mybatis的日志打印
+# 在dev环境开启mybatis的日志打印-控制台
 mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

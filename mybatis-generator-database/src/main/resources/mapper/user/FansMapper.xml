@@ -121,4 +121,64 @@
     <result column="sex" jdbcType="INTEGER" property="sex" />
     <result column="province" jdbcType="VARCHAR" property="province" />
   </resultMap>
+  <resultMap id="BaseResultMap" type="com.zyx.pojo.Fans">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="writer_id" jdbcType="VARCHAR" property="writerId" />
+    <result column="fan_id" jdbcType="VARCHAR" property="fanId" />
+    <result column="face" jdbcType="VARCHAR" property="face" />
+    <result column="fan_nickname" jdbcType="VARCHAR" property="fanNickname" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+  </resultMap>
+  <resultMap id="BaseResultMap" type="com.zyx.pojo.Fans">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="writer_id" jdbcType="VARCHAR" property="writerId" />
+    <result column="fan_id" jdbcType="VARCHAR" property="fanId" />
+    <result column="face" jdbcType="VARCHAR" property="face" />
+    <result column="fan_nickname" jdbcType="VARCHAR" property="fanNickname" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+  </resultMap>
+  <resultMap id="BaseResultMap" type="com.zyx.pojo.Fans">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="writer_id" jdbcType="VARCHAR" property="writerId" />
+    <result column="fan_id" jdbcType="VARCHAR" property="fanId" />
+    <result column="face" jdbcType="VARCHAR" property="face" />
+    <result column="fan_nickname" jdbcType="VARCHAR" property="fanNickname" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+  </resultMap>
+  <resultMap id="BaseResultMap" type="com.zyx.pojo.Fans">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="writer_id" jdbcType="VARCHAR" property="writerId" />
+    <result column="fan_id" jdbcType="VARCHAR" property="fanId" />
+    <result column="face" jdbcType="VARCHAR" property="face" />
+    <result column="fan_nickname" jdbcType="VARCHAR" property="fanNickname" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+  </resultMap>
+  <resultMap id="BaseResultMap" type="com.zyx.pojo.Fans">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="writer_id" jdbcType="VARCHAR" property="writerId" />
+    <result column="fan_id" jdbcType="VARCHAR" property="fanId" />
+    <result column="face" jdbcType="VARCHAR" property="face" />
+    <result column="fan_nickname" jdbcType="VARCHAR" property="fanNickname" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+  </resultMap>
 </mapper>
