@@ -1,6 +1,5 @@
 package com.zyx.article;
 
-import com.rule.MyRule;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;

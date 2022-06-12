@@ -14,7 +14,7 @@ spring:
     password: admin
     virtual-host: zyx-news-service
 
-# 在dev环境开启mybatis的日志打印
+# 在dev环境开启mybatis的日志打印-控制台
 mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
